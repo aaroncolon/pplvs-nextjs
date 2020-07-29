@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import Layout, { siteTitle } from '../../components/layout'
+import Layout, { siteTitle } from '../../components/Layout'
 import Head from 'next/head'
 import generatePageTitle from '../../utilities/pageTitle'
 import { getAllPostIds, getPostData } from '../../lib/posts'
@@ -22,8 +22,10 @@ export default function Post({ postData }) {
       </Head>
       <h1 dangerouslySetInnerHTML={{ __html: postData.title.rendered }} />
       <p dangerouslySetInnerHTML={{ __html: postData.content.rendered }} />
-      <h2>Article URL</h2>
-      <p><a href={postData.meta.ac_url_article[0]}>{postData.meta.ac_url_article[0]}</a></p>
+      <h2>Article URLs</h2>
+      <ul>
+        {doArticleLinks(postData)}
+      </ul>
     </Layout>
   )
 }
@@ -45,4 +47,17 @@ export async function getStaticProps({ params }) {
       postData
     }
   }
+}
+
+function doArticleLinks(data) {
+  if (! data.meta.ac_url_article || ! data.meta.ac_url_article.length) {
+    return <li>No URLs found.</li>
+  }
+  return data.meta.ac_url_article.map((item, index) => {
+    return (
+      <li key={'article-' + index}>
+        <a target="_blank" href={item}>{item}</a>
+      </li>
+    )
+  })
 }

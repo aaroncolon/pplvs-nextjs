@@ -1,7 +1,8 @@
 import Head from 'next/head'
 import Header from '../components/Header'
+import Navigation from '../components/Navigation'
+import Footer from '../components/Footer'
 
-import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 
@@ -10,13 +11,14 @@ export const siteTitle = 'People VS'
 
 export default function Layout({ children, home }) {
   return (
-    <div className={styles.container}>
+    <div className="site clearfix">
 
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
           content="People VS built with Next.js"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           property="og:image"
           content="/people-vs-open-graph-2.jpg"/>
@@ -26,22 +28,15 @@ export default function Layout({ children, home }) {
 
       <Header />
 
-      <main>
-        {children}
+      <Navigation />
+
+      <main className="site-content">
+        <div className="site-content__inner clearfix">
+          {children}
+        </div>
       </main>
 
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">
-            <a>← Back to home</a>
-          </Link>
-        </div>
-      )}
-
-      <footer>
-        <p>&copy; { new Date().getFullYear() } People VS</p>
-        <img src="/pplvs-profile-small.png" alt="People VS Logo" className={utilStyles.footerImage} />
-      </footer>
+      <Footer />
 
     </div>
   )

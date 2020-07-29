@@ -1,10 +1,9 @@
-import Layout from '../components/layout'
-import { siteTitle } from '../components/layout'
+import Layout, { siteTitle } from '../components/Layout'
 import generatePageTitle from '../utilities/pageTitle'
 import Head from 'next/head'
 import { getAllPageIdsCatchAll, getPageDataBySlug } from '../lib/pages'
 
-export default function Page({ pageData }) {
+export default function Page({ pageData, slug, slugParent }) {
   return (
     <Layout>
       <Head>
@@ -27,10 +26,14 @@ export function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  // Fetch necessary data for the blog post using params.id
-  const pageData = await getPageDataBySlug(params.slug[params.slug.length - 1])
+  // Fetch necessary data for the page using params.slug
+  const slug = params.slug[params.slug.length - 1]
+  const slugParent = (params.slug.length > 1) ? params.slug[0] : ''
+  const pageData = await getPageDataBySlug(slug, slugParent)
   return {
     props: {
+      slug,
+      slugParent,
       pageData
     }
   }
