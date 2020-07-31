@@ -48,6 +48,10 @@ class NavigationMain extends React.Component {
   doNavSubItems(item) {
     if (item.children.length) {
       return item.children.map((child) => {
+        if (child.hide) {
+          return
+        }
+
         let href = "/[...slug]"
         if (child.skipCatchAll) {
           href = `/${item.slug}/${child.slug}`
