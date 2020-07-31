@@ -48,7 +48,7 @@ export default function Home({ pageHome }) {
   const { pages, isLoadingMore, loadMore, isReachingEnd } = usePagination('posts')
 
   return (
-    <Layout home>
+    <Layout>
       <Head>
         <title>{siteTitle}</title>
       </Head>

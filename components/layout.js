@@ -3,13 +3,12 @@ import Header from '../components/Header'
 import Navigation from '../components/Navigation'
 import Footer from '../components/Footer'
 
-import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 
 const name = 'People VS'
 export const siteTitle = 'People VS'
 
-export default function Layout({ children, home }) {
+export default function Layout({ children }) {
   return (
     <div className="site clearfix">
 
