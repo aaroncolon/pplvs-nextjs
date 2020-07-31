@@ -55,7 +55,8 @@ export default function Demos({ posts }) {
   return (
     <Layout home>
       <Head>
-        <title>{siteTitle}</title>
+        <title>{generatePageTitle('Demos')}</title>
+        <meta name="og:title" content={generatePageTitle('Demos')} />
       </Head>
 
       <section>

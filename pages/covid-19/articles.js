@@ -10,6 +10,7 @@ export default function Articles() {
     <Layout>
       <Head>
         <title>{generatePageTitle('Covid-19 Articles')}</title>
+        <meta name="og:title" content={generatePageTitle('Covid-19 Articles')} />
       </Head>
 
       <h1>Covid-19 Articles</h1>

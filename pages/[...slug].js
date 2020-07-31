@@ -8,6 +8,7 @@ export default function Page({ pageData, slug, slugParent }) {
     <Layout>
       <Head>
         <title>{generatePageTitle(pageData.title.rendered)}</title>
+        <meta name="og:title" content={generatePageTitle(pageData.title.rendered)} />
       </Head>
       <h1 dangerouslySetInnerHTML={{ __html: pageData.title.rendered }} />
       <div dangerouslySetInnerHTML={{ __html: pageData.content.rendered }} />

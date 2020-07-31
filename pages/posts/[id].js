@@ -19,6 +19,7 @@ export default function Post({ postData }) {
     <Layout>
       <Head>
         <title>{generatePageTitle(postData.title.rendered)}</title>
+        <meta name="og:title" content={generatePageTitle(postData.title.rendered)} />
       </Head>
       <h1 dangerouslySetInnerHTML={{ __html: postData.title.rendered }} />
       <p dangerouslySetInnerHTML={{ __html: postData.content.rendered }} />

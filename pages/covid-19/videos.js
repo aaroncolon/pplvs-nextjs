@@ -22,7 +22,8 @@ export default function Videos(props) {
   return (
     <Layout>
       <Head>
-        <title>{generatePageTitle(data.title.rendered)}</title>
+        <title>{generatePageTitle('Covid-19 ' + data.title.rendered)}</title>
+        <meta name="og:title" content={generatePageTitle('Covid-19 ' + data.title.rendered)} />
       </Head>
 
       <h1>Covid-19 {data.title.rendered}</h1>
