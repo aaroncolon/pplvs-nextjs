@@ -4,7 +4,7 @@ import generatePageTitle from '../../utilities/pageTitle'
 import { usePagination } from '../../lib/usePaginationCategory'
 
 export default function Articles() {
-  const { pages, isLoadingMore, loadMore, isReachingEnd } = usePagination('posts/category')
+  const { pages, isLoadingMore, loadMore, isReachingEnd } = usePagination('posts/category/articles')
 
   return (
     <Layout>

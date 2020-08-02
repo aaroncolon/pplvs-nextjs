@@ -45,7 +45,7 @@ export async function getStaticProps() {
 // }
 
 export default function Home({ pageHome }) {
-  const { pages, isLoadingMore, loadMore, isReachingEnd } = usePagination('posts')
+  const { pages, isLoadingMore, loadMore, isReachingEnd } = usePagination('posts/category/home')
 
   return (
     <Layout>
