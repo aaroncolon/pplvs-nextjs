@@ -7,7 +7,7 @@ import Layout from '../../components/Layout'
 import Head from 'next/head'
 import generatePageTitle from '../../utilities/pageTitle'
 
-const PER_PAGE = 20
+const PER_PAGE = 10
 
 async function getCatIdFromSlug(slug) {
   const cats = await wp.categories().slug(slug)
@@ -19,7 +19,7 @@ let _catId = null
 const fetcher = async (url, pageIndex) => {
   let categoryId = _catId
   if (!categoryId) {
-    categoryId = await getCatIdFromSlug('coronavirus')
+    categoryId = await getCatIdFromSlug('vaccines')
   }
   return await wp.posts().categories(categoryId).page(pageIndex + 1).perPage(PER_PAGE)
 }
@@ -30,10 +30,10 @@ const fetcher = async (url, pageIndex) => {
 const getKey = (pageIndex, previousPageData) => {
   // if (previousPageData && !previousPageData.length) return null // reached end
   if (previousPageData && previousPageData._paging.totalPages === pageIndex) return null // reached end
-  return [`https://api.pplvs.org/wp-json/wp/v2/posts?page=${pageIndex}&category=coronavirus`, pageIndex] // SWR key
+  return [`https://api.pplvs.org/wp-json/wp/v2/posts?page=${pageIndex}&category=vaccines`, pageIndex] // SWR key
 }
 
-export default function Articles() {
+export default function News() {
   const { data, error, isValidating, mutate, size, setSize } = useSWRInfinite(getKey, fetcher)
 
   const isLoadingInitialData = !data && !error
@@ -45,11 +45,11 @@ export default function Articles() {
   return (
     <Layout>
       <Head>
-        <title>{generatePageTitle('Covid-19 Articles')}</title>
-        <meta name="og:title" content={generatePageTitle('Covid-19 Articles')} />
+        <title>{generatePageTitle('Vaccines News')}</title>
+        <meta name="og:title" content={generatePageTitle('Vaccines News')} />
       </Head>
 
-      <h1>Covid-19 Articles</h1>
+      <h1>Vaccines News</h1>
 
       <ul>
         {(!data) ? 
