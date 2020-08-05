@@ -36,6 +36,7 @@ export async function getStaticProps({ params }) {
       slug,
       slugParent,
       pageData
-    }
+    },
+    revalidate: 1800
   }
 }

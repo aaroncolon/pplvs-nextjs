@@ -3,19 +3,19 @@ import Layout, { siteTitle } from '../components/Layout'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 
-import { getPosts } from '../lib/posts'
+import { getPostsByCategory } from '../lib/posts'
 import { getPageBySlug } from '../lib/pages'
-
-import { swrPosts } from '../lib/swrPosts'
-import { usePagination } from '../lib/usePaginationCategory'
 
 // Static Generation / SSG / Pre-Rendering
 export async function getStaticProps() {
   const pageHome = await getPageBySlug('home')
+  const postsData = await getPostsByCategory('coronavirus')
   return {
     props: {
-      pageHome
-    }
+      pageHome,
+      postsData
+    },
+    revalidate: 1800
   }
 }
 
@@ -44,8 +44,17 @@ export async function getStaticProps() {
 //   })
 // }
 
-export default function Home({ pageHome }) {
-  const { pages, isLoadingMore, loadMore, isReachingEnd } = usePagination('posts/category/home')
+export default function Home({ pageHome, postsData }) {
+  const posts = postsData.map((item) => {
+    const _id = item.slug + '--' + String(item.id)
+    return (
+      <li key={item.id}>
+        <Link href="/posts/[id]" as={`/posts/${_id}`}>
+          <a dangerouslySetInnerHTML={{ __html: item.title.rendered }} />
+        </Link>
+      </li>
+    )
+  })
 
   return (
     <Layout>
@@ -60,16 +69,8 @@ export default function Home({ pageHome }) {
       <section>
         <h2>Recent Covid-19 Articles</h2>
         <ul>
-          {pages}
+          {posts}
         </ul>
-        <p>
-          <button
-            className="button expanded"
-            onClick={loadMore}
-            disabled={isLoadingMore || isReachingEnd}>
-            Load More...
-          </button>
-        </p>
       </section>
     </Layout>
   )
