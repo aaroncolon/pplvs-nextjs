@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/aaroncol/pplvs.org/.next
+    - rsync -av .next/ $DEPLOYPATH
