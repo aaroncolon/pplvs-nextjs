@@ -115,24 +115,24 @@ a:focus {
   cursor: pointer;
 }
 
-.button, 
-.button.disabled, 
-.button[disabled], 
-.button.disabled:hover, 
-.button[disabled]:hover, 
-.button.disabled:focus, 
+.button,
+.button.disabled,
+.button[disabled],
+.button.disabled:hover,
+.button[disabled]:hover,
+.button.disabled:focus,
 .button[disabled]:focus {
   background-color: #1779ba;
   color: #fefefe;
 }
 
-.button:hover, 
+.button:hover,
 .button:focus {
   background-color: #14679e;
   color: #fefefe;
 }
 
-a.button:hover, 
+a.button:hover,
 a.button:focus {
   text-decoration: none;
 }
@@ -239,13 +239,13 @@ a.button:focus {
 }
 
 .menu--primary a:link,
-.menu--primary a:visited { 
+.menu--primary a:visited {
   color: #333;
 }
 
 .menu--primary a:hover,
 .menu--primary a:active,
-.menu--primary a:focus { 
+.menu--primary a:focus {
   color: #1779ba;
 }
 
@@ -266,7 +266,16 @@ a.button:focus {
   .wp-video video {
     height: auto !important;
     width: 100% !important;
-  }  
+  }
+}
+
+/*--------------------------------------------------------------
+## Galleries
+--------------------------------------------------------------*/
+
+.gallery-item {
+  margin: 0;
+  padding: 6px;
 }
 
 
@@ -276,6 +285,11 @@ a.button:focus {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.wp-block-image .aligncenter,
+.aligncenter .wp-block-embed__wrapper {
+  text-align: center;
 }
 
 /*
@@ -300,6 +314,20 @@ a.button:focus {
 }
 
 .object-fluid iframe {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.wp-embed-aspect-16-9 .wp-block-embed__wrapper {
+  height: 0;
+  padding-bottom: 56.25%;
+  position: relative;
+}
+
+.wp-embed-aspect-16-9 .wp-block-embed__wrapper iframe {
   height: 100%;
   left: 0;
   position: absolute;
@@ -461,5 +489,37 @@ a.button:focus {
 
   .site-footer {
     padding-left: 200px;
-  }  
+  }
+
+  /*--------------------------------------------------------------
+  ## Galleries
+  --------------------------------------------------------------*/
+  .gallery {
+    margin-bottom: 1.5em; }
+
+  .gallery-item {
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    width: 100%; }
+    .gallery-columns-2 .gallery-item {
+      max-width: 50%; }
+    .gallery-columns-3 .gallery-item {
+      max-width: 33.33%; }
+    .gallery-columns-4 .gallery-item {
+      max-width: 25%; }
+    .gallery-columns-5 .gallery-item {
+      max-width: 20%; }
+    .gallery-columns-6 .gallery-item {
+      max-width: 16.66%; }
+    .gallery-columns-7 .gallery-item {
+      max-width: 14.28%; }
+    .gallery-columns-8 .gallery-item {
+      max-width: 12.5%; }
+    .gallery-columns-9 .gallery-item {
+      max-width: 11.11%; }
+
+  .gallery-caption {
+    display: block; }
+
 }
