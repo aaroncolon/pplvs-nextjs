@@ -13,14 +13,14 @@ export default function Layout({ children }) {
     <div className="site clearfix">
 
       <Head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="https://pplvs.org/favicon.ico" />
         <meta
           name="description"
-          content="People VS built with Next.js"/>
+          content="People VS" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           property="og:image"
-          content="/people-vs-open-graph-2.jpg"/>
+          content="https://pplvs.org/people-vs-open-graph-2.jpg" />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
