@@ -98,6 +98,11 @@ a:focus {
   text-decoration: underline;
 }
 
+.alert a {
+  color: inherit;
+  text-decoration: underline;
+}
+
 .button {
   display: inline-block;
   vertical-align: middle;
@@ -254,7 +259,7 @@ a.button:focus {
 }
 
 .menu-toggle--open ~ .menu--primary {
-  max-height: 1000px;
+  max-height: 1500px;
   visibility: visible;
 }
 
