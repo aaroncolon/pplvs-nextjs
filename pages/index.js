@@ -14,7 +14,7 @@ export async function getStaticProps() {
     props: {
       pageHome
     },
-    revalidate: 1800
+    revalidate: 900
   }
 }
 
